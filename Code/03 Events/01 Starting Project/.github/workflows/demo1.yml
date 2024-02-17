@@ -1,5 +1,20 @@
 name: Events Demo 1
-on: ...
+on: 
+  pull_request:
+    types:
+      - opened
+    branches:
+      - main #main branch
+      - 'dev-*' #dev-new dev-this-new
+      - 'feat/**' #feat/new feat/new/button
+  workflow_dispatch: #This must be added this way even if there is no list under it(colons ust be there)
+  push:
+    branches:
+      - main #main branch
+      - 'dev-*' #dev-new dev-this-new
+      - 'feat/**' #feat/new feat/new/button
+    path-ignore:
+      - '.github/workflow/*'
 jobs:
   deploy:
     runs-on: ubuntu-latest
